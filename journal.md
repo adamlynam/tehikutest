@@ -12,3 +12,9 @@ The intent of this journal is to document my stream of concious thoughts through
 - 25 March @ 5:40pm - Added generic python gitignore file
 - 25 March @ 5:40pm - Pushed new project to my GitHub
 - 25 March @ 5:50pm - Add `black` formatter to dependencies and install it
+- 26 March @ 9:00am - Received programming test document link
+- 26 March @ 9:00am - Reviewing Tic Tac Toe google document with test instructions
+- 26 March @ 9:05am - Confirmed with Keoni that I received instructions
+- 26 March @ 9:10am - Getting started on exercise using my existing project setup
+- 26 March @ 9:10am - I figure I need a way to print out a Tic Tac Toe board. I will start with writing a unit test to expect an empty board to be returned.
+- 26 March @ 9:10am - Grabbed a sample test fixture from my coding kata project to get me started (I can never remember the boilerplate for tests off the top of my head).
