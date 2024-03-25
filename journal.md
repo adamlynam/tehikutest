@@ -11,3 +11,4 @@ The intent of this journal is to document my stream of concious thoughts through
 - 25 March @ 5:40pm - Created new git repository
 - 25 March @ 5:40pm - Added generic python gitignore file
 - 25 March @ 5:40pm - Pushed new project to my GitHub
+- 25 March @ 5:50pm - Add `black` formatter to dependencies and install it
