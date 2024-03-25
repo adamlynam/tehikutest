@@ -2,6 +2,8 @@
 
 The intent of this journal is to document my stream of concious thoughts throughout the Te Hiku Media coding exercise so I can share my thought process with the assessment team afterwards.
 
+## Log
+
 - 25 March @ 5:25pm - Created this journal document
 - 25 March @ 5:30pm - Added `requirements.txt` file with `pytest` as only dependency
 - 25 March @ 5:30pm - Added `pyproject.toml` file to set up a Python project with `src` and `test` subdirectories
@@ -39,3 +41,26 @@ The intent of this journal is to document my stream of concious thoughts through
 - 26 March @ 11:05am - I am going to sweep over the code, see if I can tidy up or comment anything that feels messy.
 - 26 March @ 11:15am - Refactored code into separate implementation files, keep the user interaction in the primary entry point and other logic out of the way.
 - 26 March @ 11:20am - Added instructions for running the application to the `README.md`
+- 26 March @ 11:20am - I am going to stop here and give some reflections about my implementation and some ideas about what I would do next to improve things and speculate about how I might tackle the bonus exercise.
+- 26 March @ 11:35am - Added my reflections on the codebase, next steps and ideas for the automated player.
+
+## Reflection
+
+The main thing that stands out to me is how baked in the 3x3 game board is to my solution. Almost all my code makes strong assumptions that the board will always be 3x3, including the rendering of the board, win and tie checks and validation checks. There would definitely be opportunities to express that logic in a way that was configurable, even more challenging parts like the win conditions could be coded instead of running the static checks I have implemented.
+
+The user experience of interacting with the command line is not amazing. This is something I would almost certainly spend time on next if I was continuing. I think a nice alternative for choosing moves would be to show all available moves and ask the user to select one. e.g.
+
+```
+Please enter the number for an avaialble move you would like to make:
+[1] - (1,1)
+[2] - (1,2)
+[3] - (1,3)
+...
+[9] - (3,3)
+```
+
+I reached for using a try, except workflow using exceptions for validation of the user data. In hindsight, I think this wasn't the most responsible implementation. Exceptions are a very rigid construct and using them to ferry user facing messaging can be clumsy. I should have probably used a different representation for valdiation errors than hijacking the exception workflow. I would refactor this as a matter of priority to avoid setting a dangerous precedent in the codebase.
+
+For the computer player, I think I would initially reach for a player than makes a random move on their turn. This actually intersects well with my suggestion for an improved user experience for the human player as well as I would need to generate all possible moves to randomly select one for the automated player. Starting with randomness is also a good way to tease out bugs during fuzz testing. It could help make the application more robust as a side effect. An idea for a slightly more sophisticated automated player could be to extrapolate from the human players last move, adding or removing from their coordinate indexes in an attempt to perform a win-blocking move; it would need some experimentation.
+
+I would have preferred to use test driven development the whole time, but I am not familiar with how to test against standard input and output off the top of my head. It didn't seem like the right use of time to investigate that for this exercise. If this application was going to have a longer life, understanding how to test across that boundary would be important to me.
