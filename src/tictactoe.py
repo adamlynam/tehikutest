@@ -93,6 +93,17 @@ def player_has_won(
     return None
 
 
+all_moves = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
+
+
+def board_is_full(noughts_moves: list[list[int]], crosses_moves: list[list[int]]):
+    for move in all_moves:
+        if move not in noughts_moves and move not in crosses_moves:
+            return False
+
+    return True
+
+
 # primary entry point for the app
 if __name__ == "__main__":
 
@@ -141,7 +152,15 @@ if __name__ == "__main__":
                     if player_that_won == "x":
                         print("Congratulations crosses, you have won")
                     exiting = True
+                else:
+                    # check for a tie
+                    if board_is_full(noughts_moves, crosses_moves):
+                        print(
+                            "The board has filled up without a winner, the game ends in a tie"
+                        )
+                        exiting = True
+
             except Exception:
-                print("Your move could not be understood, try again")
+                print("Your move could not be understood, try enter it again")
 
     print("Thank you for playing Tic Tac Toe by Adam Lynam")
