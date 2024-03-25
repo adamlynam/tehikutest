@@ -1,4 +1,4 @@
-from tictactoe import move_has_already_been_taken
+from game_logic import move_has_already_been_taken
 
 
 def test_move_already_taken_returns_false_when_no_moves_have_been_recorded():

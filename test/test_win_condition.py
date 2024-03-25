@@ -1,4 +1,4 @@
-from tictactoe import player_has_won
+from game_logic import player_has_won
 
 
 def test_nobody_has_won_with_empty_board():

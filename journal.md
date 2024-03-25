@@ -36,3 +36,4 @@ The intent of this journal is to document my stream of concious thoughts through
 - 26 March @ 10:50am - Have to Google how to grab message from an exception.
 - 26 March @ 10:55am - The coordinate boundaries are now being checked for. Next I will move to validating that a move has not already been taken by the other player.
 - 26 March @ 11:05am - Moves cannot be taken that another player has already taken now. I believe the game is functionally complete now. Though it feels very rough.
+- 26 March @ 11:05am - I am going to sweep over the code, see if I can tidy up or comment anything that feels messy.

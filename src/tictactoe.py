@@ -1,3 +1,7 @@
+from render import render_board
+from game_logic import move_has_already_been_taken, player_has_won, board_is_full
+
+
 def parse_input_for_coordinates(text_input: str) -> list[int]:
     parts = text_input.split(",")
 
@@ -19,114 +23,9 @@ def parse_input_for_coordinates(text_input: str) -> list[int]:
     return [line_index - 1, column_index - 1]
 
 
-def move_has_already_been_taken(
-    move: list[int], noughts_moves: list[list[int]], crosses_moves: list[list[int]]
-) -> bool:
-    if move in noughts_moves or move in crosses_moves:
-        return True
-
-    return False
-
-
-def render_horitonzal_line() -> str:
-    return "---------"
-
-
-def calculate_move(
-    play_line_index: int,
-    play_column_index: int,
-    noughts_moves: list[list[int]],
-    crosses_moves: list[list[int]],
-) -> str:
-    if [play_line_index, play_column_index] in noughts_moves:
-        return "o"
-    elif [play_line_index, play_column_index] in crosses_moves:
-        return "x"
-    else:
-        return " "
-
-
-def render_play_line(
-    play_line_index: int, noughts_moves: list[list[int]], crosses_moves: list[list[int]]
-) -> str:
-    position_zero = calculate_move(play_line_index, 0, noughts_moves, crosses_moves)
-    position_one = calculate_move(play_line_index, 1, noughts_moves, crosses_moves)
-    position_two = calculate_move(play_line_index, 2, noughts_moves, crosses_moves)
-    return f"{position_zero} | {position_one} | {position_two}"
-
-
-def render_board(
-    noughts_moves: list[list[int]], crosses_moves: list[list[int]]
-) -> list[str]:
-    board = []
-    board.append(render_play_line(0, noughts_moves, crosses_moves))
-    board.append(render_horitonzal_line())
-    board.append(render_play_line(1, noughts_moves, crosses_moves))
-    board.append(render_horitonzal_line())
-    board.append(render_play_line(2, noughts_moves, crosses_moves))
-    return board
-
-
 def display_board(board: list[str]):
     for line in board:
         print(line)
-
-
-def player_has_diagonal_win(moves):
-    if [0, 0] in moves and [1, 1] in moves and [2, 2] in moves:
-        return True
-    if [0, 2] in moves and [1, 1] in moves and [2, 0] in moves:
-        return True
-    return False
-
-
-def player_has_horizontal_win(moves):
-    if [0, 0] in moves and [0, 1] in moves and [0, 2] in moves:
-        return True
-    if [1, 0] in moves and [1, 1] in moves and [1, 2] in moves:
-        return True
-    if [2, 0] in moves and [2, 1] in moves and [2, 2] in moves:
-        return True
-    return False
-
-
-def player_has_vertical_win(moves):
-    if [0, 0] in moves and [1, 0] in moves and [2, 0] in moves:
-        return True
-    if [0, 1] in moves and [1, 1] in moves and [2, 1] in moves:
-        return True
-    if [0, 2] in moves and [1, 2] in moves and [2, 2] in moves:
-        return True
-    return False
-
-
-def player_has_won(
-    noughts_moves: list[list[int]], crosses_moves: list[list[int]]
-) -> str | None:
-    if player_has_diagonal_win(noughts_moves):
-        return "o"
-    if player_has_diagonal_win(crosses_moves):
-        return "x"
-    if player_has_horizontal_win(noughts_moves):
-        return "o"
-    if player_has_horizontal_win(crosses_moves):
-        return "x"
-    if player_has_vertical_win(noughts_moves):
-        return "o"
-    if player_has_vertical_win(crosses_moves):
-        return "x"
-    return None
-
-
-all_moves = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
-
-
-def board_is_full(noughts_moves: list[list[int]], crosses_moves: list[list[int]]):
-    for move in all_moves:
-        if move not in noughts_moves and move not in crosses_moves:
-            return False
-
-    return True
 
 
 # primary entry point for the app

@@ -1,4 +1,4 @@
-from tictactoe import render_board
+from render import render_board
 
 
 def test_render_board_returns_empty_board():

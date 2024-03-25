@@ -1,4 +1,4 @@
-from tictactoe import board_is_full
+from game_logic import board_is_full
 
 
 def test_board_is_not_full_for_empty_board():
