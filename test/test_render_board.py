@@ -1,4 +1,4 @@
-from tictactoe import render_board, parse_input_for_coordinates
+from tictactoe import render_board
 
 
 def test_render_board_returns_empty_board():
@@ -26,7 +26,3 @@ def test_render_board_with_crosses_move():
     assert board_state[2] == "  |   |  "
     assert board_state[3] == "---------"
     assert board_state[4] == "  |   | x"
-
-
-def test_parse_input_can_extract_coordinates():
-    assert parse_input_for_coordinates("1,1") == [1, 1]

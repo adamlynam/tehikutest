@@ -28,3 +28,4 @@ The intent of this journal is to document my stream of concious thoughts through
 - 26 March @ 10:00am - I am having some trouble with the input parsing, so I will wrap the function in a test to help tease out the bug.
 - 26 March @ 10:05am - Looks like I had a bracket syntax error, testing made it very clear and then I found the missing bracket.
 - 26 March @ 10:05am - The core of the game loop is now in place, and if the user only enters valid moves it will properly move back and forth between players without getting into a weird state. However, there is still the matter of the win condition and move validation to get right.
+- 26 March @ 10:10am - I will get the win condition working, that will give us a complete game. I am going to move back to unit testing to express the win condition logic.
