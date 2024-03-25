@@ -18,3 +18,8 @@ The intent of this journal is to document my stream of concious thoughts through
 - 26 March @ 9:10am - Getting started on exercise using my existing project setup
 - 26 March @ 9:10am - I figure I need a way to print out a Tic Tac Toe board. I will start with writing a unit test to expect an empty board to be returned.
 - 26 March @ 9:10am - Grabbed a sample test fixture from my coding kata project to get me started (I can never remember the boilerplate for tests off the top of my head).
+- 26 March @ 9:15am - Have test for intial empty board rendering set up. Next I will work on the game state.
+- 26 March @ 9:15am - I figure I need to store the moves made by each symbol (player) and pass that to my render function to include any existing moves made. I will store moves as two lists, one for noughts and one for crosses. Each list will include coordinates for a move previously made.
+- 26 March @ 9:25am - I was preivously rendering the entire empty board at once, now I need to refactor that code into rendering line by line. It is helpful to extract that responsibility to separate functions.
+- 26 March @ 9:30am - In an attempt to keep the render code concise, I googled how to do a ternary operation in Python. I decided to use an `f string` and Googled that syntax too.
+- 26 March @ 9:35am - I am reasonably confident my board rendering is working right. Next step will be to add the player interaction in. Unit testing is going to be less helpful as I move into user driven behaviour, so I will test commandline interaction manually.
