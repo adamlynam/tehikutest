@@ -1,6 +1,22 @@
 def parse_input_for_coordinates(text_input: str) -> list[int]:
     parts = text_input.split(",")
-    return [int(parts[0]), int(parts[1])]
+
+    # validate user input
+    try:
+        line_index = int(parts[0])
+        column_index = int(parts[1])
+    except Exception:
+        raise ValueError("Could not parse input as coordinates")
+    if line_index < 1:
+        raise ValueError("Line index cannot be less than 1")
+    if column_index < 1:
+        raise ValueError("Column index cannot be less than 1")
+    if line_index > 3:
+        raise ValueError("Line index cannot be greater than 3")
+    if column_index > 3:
+        raise ValueError("Column index cannot be greater than 3")
+
+    return [line_index - 1, column_index - 1]
 
 
 def render_horitonzal_line() -> str:
@@ -160,7 +176,8 @@ if __name__ == "__main__":
                         )
                         exiting = True
 
-            except Exception:
-                print("Your move could not be understood, try enter it again")
+            except Exception as ex:
+                print(ex)
+                print("Please enter your move again")
 
     print("Thank you for playing Tic Tac Toe by Adam Lynam")

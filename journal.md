@@ -31,3 +31,6 @@ The intent of this journal is to document my stream of concious thoughts through
 - 26 March @ 10:10am - I will get the win condition working, that will give us a complete game. I am going to move back to unit testing to express the win condition logic.
 - 26 March @ 10:25am - The win condition is now correctly being checked. I realise I need to add a check for a tie board. I will do that now.
 - 26 March @ 10:35am - The tie condition is now being correctly checked. Next I will move on to tightening up the user input and validation scenarios to ensure a smooth game.
+- 26 March @ 10:40am - I will first check the boundaries of the coordinates, it strikes me that I should probably accept a 1-based index from user input and convert to a 0-based index in code to be as accomodating for non-programmers as possible.
+- 26 March @ 10:45am - I once again need to refer to my coding kata project for how to assert an exception is thrown in a test.
+- 26 March @ 10:50am - Have to Google how to grab message from an exception.
