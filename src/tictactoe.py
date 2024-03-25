@@ -19,6 +19,15 @@ def parse_input_for_coordinates(text_input: str) -> list[int]:
     return [line_index - 1, column_index - 1]
 
 
+def move_has_already_been_taken(
+    move: list[int], noughts_moves: list[list[int]], crosses_moves: list[list[int]]
+) -> bool:
+    if move in noughts_moves or move in crosses_moves:
+        return True
+
+    return False
+
+
 def render_horitonzal_line() -> str:
     return "---------"
 
@@ -146,35 +155,39 @@ if __name__ == "__main__":
         else:
             try:
                 # extract the move from the user input
-                coordinates = parse_input_for_coordinates(text_input)
-                # TODO: check for valid move first
+                move = parse_input_for_coordinates(text_input)
 
-                # record the move
-                if noughts_turn:
-                    noughts_moves.append(coordinates)
-                    noughts_turn = False
+                # check for valid move
+                if move_has_already_been_taken(move, noughts_moves, crosses_moves):
+                    print("Unfortunately, that space is already taken")
+                    print("Please enter another move")
                 else:
-                    crosses_moves.append(coordinates)
-                    noughts_turn = True
+                    # record the move
+                    if noughts_turn:
+                        noughts_moves.append(move)
+                        noughts_turn = False
+                    else:
+                        crosses_moves.append(move)
+                        noughts_turn = True
 
-                # display the game board
-                display_board(render_board(noughts_moves, crosses_moves))
+                    # display the game board
+                    display_board(render_board(noughts_moves, crosses_moves))
 
-                # check for win
-                player_that_won = player_has_won(noughts_moves, crosses_moves)
-                if player_that_won != None:
-                    if player_that_won == "o":
-                        print("Congratulations noughts, you have won")
-                    if player_that_won == "x":
-                        print("Congratulations crosses, you have won")
-                    exiting = True
-                else:
-                    # check for a tie
-                    if board_is_full(noughts_moves, crosses_moves):
-                        print(
-                            "The board has filled up without a winner, the game ends in a tie"
-                        )
+                    # check for win
+                    player_that_won = player_has_won(noughts_moves, crosses_moves)
+                    if player_that_won != None:
+                        if player_that_won == "o":
+                            print("Congratulations noughts (o), you have won")
+                        if player_that_won == "x":
+                            print("Congratulations crosses (x), you have won")
                         exiting = True
+                    else:
+                        # check for a tie
+                        if board_is_full(noughts_moves, crosses_moves):
+                            print(
+                                "The board has filled up without a winner, the game ends in a tie"
+                            )
+                            exiting = True
 
             except Exception as ex:
                 print(ex)
