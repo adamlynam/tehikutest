@@ -37,3 +37,5 @@ The intent of this journal is to document my stream of concious thoughts through
 - 26 March @ 10:55am - The coordinate boundaries are now being checked for. Next I will move to validating that a move has not already been taken by the other player.
 - 26 March @ 11:05am - Moves cannot be taken that another player has already taken now. I believe the game is functionally complete now. Though it feels very rough.
 - 26 March @ 11:05am - I am going to sweep over the code, see if I can tidy up or comment anything that feels messy.
+- 26 March @ 11:15am - Refactored code into separate implementation files, keep the user interaction in the primary entry point and other logic out of the way.
+- 26 March @ 11:20am - Added instructions for running the application to the `README.md`
